@@ -1,0 +1,41 @@
+body {
+  font-weight: normal;
+  font-size: 1.5rem;
+  line-height: 1.467;
+  font-family: "Segoe UI", "Segoe WP", Arial, Sans-Serif;
+  color: #333;
+}
+.cconverter {
+  width: 64.4rem;
+  float: left;
+  height: 25rem;
+  /* background-color: #1c2e48; */
+}
+
+.ccsection {
+  width: 28.5rem;
+  display: inline-block;
+  float: left;
+}
+
+.ccrate {
+  text-align: left;
+  width: 100%;
+  color: rgba(228, 25, 25, 0.9);
+  font-size: 1.5rem;
+  line-height: 1.467;
+  margin-bottom: 0.5rem;
+}
+
+.frmdropdown {
+  display: inline-block;
+  position: relative;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
