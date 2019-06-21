@@ -4,7 +4,7 @@ import uuid from "uuid";
 
 class SearchCurrency extends React.Component {
   handleChange = e => {
-    // console.log(e.target);
+    console.log(e.target);
     if (e.target.name === "from") {
       // this.setState({ base: e.target.value });
       this.props.updateBase(e.target.value);
@@ -22,7 +22,7 @@ class SearchCurrency extends React.Component {
         <div className="frmdropdown">
           <select
             id="frmmenu"
-            className="ui fluid search selection dropdown"
+            className="ui fluid selection dropdown"
             name="from"
             value={base}
             onChange={e => this.handleChange(e)}

@@ -25,14 +25,21 @@ class App extends React.Component {
     });
   };
 
+  updateBaseOnClick = currency => {
+    this.setState({ base: currency }, () => {
+      this.getBaseCurrencyData();
+    });
+  };
+
   getBaseCurrencyData = () => {
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`)
       .then(res => {
         console.log(res.data.rates[this.state.toCurrency]);
         const currencyRate = res.data.rates[this.state.toCurrency].toFixed(5);
+        const currencyRateInverted = (1 / currencyRate).toFixed(5);
         const transactionDate = res.data.date;
-        this.setState({ currencyRate, transactionDate });
+        this.setState({ currencyRate, transactionDate, currencyRateInverted });
 
         const currencyArr = [];
         for (const item in res.data.rates) {
@@ -87,9 +94,49 @@ class App extends React.Component {
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
+                      updateBaseOnClick={this.updateBaseOnClick}
                     />
                   </div>
-                  <div className="content">Calculator will be shown here</div>
+                  <div className="content">
+                    <div className="ui grid">
+                      <div className="sixteen wide center aligned column">
+                        <div className="ui input focus">
+                          <input
+                            type="text"
+                            placeholder="Amount to be converted"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className="eight wide center aligned column"
+                        style={{
+                          border: "1px solid grey",
+                          borderRadius: "6px"
+                        }}
+                      >
+                        Commission rate
+                      </div>
+                      <div
+                        className="eight wide center aligned column"
+                        style={{
+                          border: "1px solid grey",
+                          borderRadius: "6px"
+                        }}
+                      >
+                        Commission fee
+                      </div>
+                      <div
+                        className="sixteen wide center aligned column"
+                        style={{
+                          border: "1px solid grey",
+                          borderRadius: "6px",
+                          margin: "5px 5px 5px 5px"
+                        }}
+                      >
+                        Amount after commission
+                      </div>
+                    </div>
+                  </div>
                   <div className="aligned content">
                     <QuickConversion
                       updateBase={this.updateBase}
@@ -103,7 +150,11 @@ class App extends React.Component {
               <div className="eight wide column">
                 <div className="ui fluid card right">
                   <div className="content">
-                    Currency Rate-to will be shown here
+                    <CurrencyRate
+                      base={this.state.toCurrency}
+                      currencyRate={this.state.currencyRateInverted}
+                      toCurrency={this.state.base}
+                    />
                   </div>
                   <div className="content">
                     CurrencySearch-to dropdown will be shown here
