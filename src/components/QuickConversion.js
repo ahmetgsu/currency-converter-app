@@ -1,9 +1,9 @@
 import React from "react";
 
 class QuickConversion extends React.Component {
-  handleClick = e => {
-    this.props.updateBaseOnClick(e.target.value);
-  };
+  //   handleClick = e => {
+  //     this.props.updateBaseOnClick(e.target.value);
+  //   };
   render() {
     return (
       <div className="ui stackable four column grid">
