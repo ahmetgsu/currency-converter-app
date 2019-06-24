@@ -1,9 +1,8 @@
 import React from "react";
 
 class CurrencyRate extends React.Component {
-  render() {
+  renderContent = () => {
     const { base, currencyRate, toCurrency } = this.props;
-
     if (base === toCurrency) {
       return (
         <div>
@@ -17,6 +16,10 @@ class CurrencyRate extends React.Component {
         </div>
       );
     }
+  };
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 

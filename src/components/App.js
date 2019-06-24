@@ -2,6 +2,7 @@ import React from "react";
 import SearchCurrency from "./SearchCurrency";
 import CurrencyRate from "./CurrencyRate";
 import QuickConversion from "./QuickConversion";
+import Calculator from "./Calculator";
 import axios from "axios";
 // import Country from "./Country";
 
@@ -12,12 +13,12 @@ class App extends React.Component {
     base: "USD",
     amount: "",
     toCurrency: "EUR",
-    currencies: [],
-    className: ""
+    currencies: []
   };
 
   componentDidMount() {
     this.getBaseCurrencyData();
+    console.log(`App component is mounted`);
   }
   updateBase = currency => {
     this.setState({ base: currency }, () => {
@@ -35,7 +36,7 @@ class App extends React.Component {
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`)
       .then(res => {
-        console.log(res.data.rates[this.state.toCurrency]);
+        // console.log(res.data.rates[this.state.toCurrency]);
         const currencyRate = res.data.rates[this.state.toCurrency].toFixed(5);
         const currencyRateInverted = (1 / currencyRate).toFixed(5);
         const transactionDate = res.data.date;
@@ -91,53 +92,17 @@ class App extends React.Component {
                   <div className="content">
                     <SearchCurrency
                       updateBase={this.updateBase}
+                      updateBaseOnClick={this.updateBaseOnClick}
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
-                      updateBaseOnClick={this.updateBaseOnClick}
+                      ref={this.divRef}
                     />
                   </div>
                   <div className="content">
-                    <div className="ui grid">
-                      <div className="sixteen wide center aligned column">
-                        <div className="ui input focus">
-                          <input
-                            type="text"
-                            placeholder="Amount to be converted"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="eight wide center aligned column"
-                        style={{
-                          border: "1px solid grey",
-                          borderRadius: "6px"
-                        }}
-                      >
-                        Commission rate
-                      </div>
-                      <div
-                        className="eight wide center aligned column"
-                        style={{
-                          border: "1px solid grey",
-                          borderRadius: "6px"
-                        }}
-                      >
-                        Commission fee
-                      </div>
-                      <div
-                        className="sixteen wide center aligned column"
-                        style={{
-                          border: "1px solid grey",
-                          borderRadius: "6px",
-                          margin: "5px 5px 5px 5px"
-                        }}
-                      >
-                        Amount after commission
-                      </div>
-                    </div>
+                    <Calculator base={this.state.base} />
                   </div>
-                  <div className="aligned content">
+                  <div className="content">
                     <QuickConversion
                       updateBase={this.updateBase}
                       base={this.state.base}
@@ -157,11 +122,24 @@ class App extends React.Component {
                     />
                   </div>
                   <div className="content">
-                    CurrencySearch-to dropdown will be shown here
+                    <SearchCurrency
+                      updateBase={this.updateBase}
+                      base={this.state.base}
+                      currencies={this.state.currencies}
+                      toCurrency={this.state.toCurrency}
+                      ref={this.divRef}
+                    />
                   </div>
-                  <div className="content">Calculator will be shown here</div>
                   <div className="content">
-                    Quick currency selector buttons will be shown here
+                    <Calculator toCurrency={this.state.toCurrency} />
+                  </div>
+                  <div className="content">
+                    <QuickConversion
+                      updateBase={this.updateBase}
+                      base={this.state.base}
+                      currencies={this.state.currencies}
+                      toCurrency={this.state.toCurrency}
+                    />
                   </div>
                 </div>
               </div>
