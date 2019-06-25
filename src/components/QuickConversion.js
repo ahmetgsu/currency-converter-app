@@ -6,7 +6,7 @@ class QuickConversion extends React.Component {
     this.props.updateBaseOnClick(e);
   };
 
-  renderConstent = () => {
+  renderContent = () => {
     const { containerSection } = this.props;
     const majorCurrenciesFrom = ["USD", "GBP", "EUR", "JPY"];
     const majorCurrenciesTo = ["EUR", "JPY", "USD", "CAD"];
@@ -51,7 +51,7 @@ class QuickConversion extends React.Component {
   };
 
   render() {
-    return <div>{this.renderConstent()}</div>;
+    return <div>{this.renderContent()}</div>;
   }
 }
 

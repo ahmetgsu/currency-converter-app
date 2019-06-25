@@ -101,7 +101,11 @@ class App extends React.Component {
                     />
                   </div>
                   <div className="content">
-                    <Calculator base={this.state.base} />
+                    <Calculator
+                      base={this.state.base}
+                      toCurrency={this.state.toCurrency}
+                      containerSection={this.state.containerSection}
+                    />
                   </div>
                   <div className="content">
                     <QuickConversion
@@ -133,7 +137,11 @@ class App extends React.Component {
                     />
                   </div>
                   <div className="content">
-                    <Calculator toCurrency={this.state.toCurrency} />
+                    <Calculator
+                      base={this.state.toCurrency}
+                      toCurrency={this.state.toCurrency}
+                      containerSection={!this.state.containerSection}
+                    />
                   </div>
                   <div className="content">
                     <QuickConversion
