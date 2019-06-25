@@ -1,36 +1,57 @@
 import React from "react";
-import { PropTypes } from "react";
 
 class QuickConversion extends React.Component {
-  constructor() {
-    super();
-
-    this.handleClick = this.handleClick.bind(this);
-  }
   handleClick = e => {
-    console.log(e.target);
-    this.props.updateBaseOnClick(e.target.value);
+    // console.log({ item });
+    this.props.updateBaseOnClick(e);
+  };
+
+  renderConstent = () => {
+    const { containerSection } = this.props;
+    const majorCurrenciesFrom = ["USD", "GBP", "EUR", "JPY"];
+    const majorCurrenciesTo = ["EUR", "JPY", "USD", "CAD"];
+
+    if (containerSection) {
+      return (
+        <div className="ui stackable four column center aligned grid">
+          {majorCurrenciesFrom.map((item, index) => {
+            return (
+              <div key={index} className="column">
+                <button
+                  key={index}
+                  className="ui button"
+                  onClick={() => this.handleClick({ item })}
+                >
+                  <strong>{item}</strong>
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      );
+    } else {
+      return (
+        <div className="ui stackable four column center aligned grid">
+          {majorCurrenciesTo.map((item, index) => {
+            return (
+              <div key={index} className="column">
+                <button
+                  key={index}
+                  className="ui button"
+                  onClick={e => this.handleClick(e)}
+                >
+                  <strong>{item}</strong>
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
   };
 
   render() {
-    const majorCurrencies = ["USD", "GBP", "EUR", "JPY"];
-    return (
-      <div className="ui stackable four column center aligned grid">
-        {majorCurrencies.map((item, index) => {
-          return (
-            <div key={index} className="column">
-              <button
-                key={index}
-                className="ui button"
-                onClick={e => this.handleClick(e)}
-              >
-                <strong>{item}</strong>
-              </button>
-            </div>
-          );
-        })}
-      </div>
-    );
+    return <div>{this.renderConstent()}</div>;
   }
 }
 

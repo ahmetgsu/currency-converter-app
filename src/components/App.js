@@ -13,7 +13,8 @@ class App extends React.Component {
     base: "USD",
     amount: "",
     toCurrency: "EUR",
-    currencies: []
+    currencies: [],
+    containerSection: "left"
   };
 
   componentDidMount() {
@@ -26,8 +27,8 @@ class App extends React.Component {
     });
   };
 
-  updateBaseOnClick = currency => {
-    this.setState({ base: currency }, () => {
+  updateBaseOnClick = curr => {
+    this.setState({ base: curr }, () => {
       this.getBaseCurrencyData();
     });
   };
@@ -96,7 +97,7 @@ class App extends React.Component {
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
-                      ref={this.divRef}
+                      containerSection={this.state.containerSection}
                     />
                   </div>
                   <div className="content">
@@ -108,6 +109,7 @@ class App extends React.Component {
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
+                      containerSection={this.state.containerSection}
                     />
                   </div>
                 </div>
@@ -127,7 +129,7 @@ class App extends React.Component {
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
-                      ref={this.divRef}
+                      containerSection={!this.state.containerSection}
                     />
                   </div>
                   <div className="content">
@@ -139,6 +141,7 @@ class App extends React.Component {
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
+                      containerSection={!this.state.containerSection}
                     />
                   </div>
                 </div>
