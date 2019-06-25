@@ -5,11 +5,6 @@ class Calculator extends React.Component {
     this.props.onInputChange(e.target.value);
   };
 
-  // converter = () => {
-  //   const { amount, currencyRate } = this.props;
-
-  // };
-
   renderContent = () => {
     const {
       containerSection,

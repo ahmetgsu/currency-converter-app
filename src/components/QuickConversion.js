@@ -2,7 +2,6 @@ import React from "react";
 
 class QuickConversion extends React.Component {
   handleClick = e => {
-    // console.log({ item });
     this.props.updateBaseOnClick(e);
   };
 

@@ -6,8 +6,6 @@ import Calculator from "./Calculator";
 import axios from "axios";
 // import Country from "./Country";
 
-// import "./style.css";
-
 class App extends React.Component {
   state = {
     base: "USD",
@@ -28,12 +26,6 @@ class App extends React.Component {
     });
   };
 
-  // updateBaseOnClick = curr => {
-  //   this.setState({ base: curr }, () => {
-  //     this.getBaseCurrencyData();
-  //   });
-  // };
-
   onInputChange = value => {
     console.log(value);
     this.setState({ amount: value });
@@ -47,7 +39,6 @@ class App extends React.Component {
         const currencyRate = res.data.rates[this.state.toCurrency].toFixed(5);
         const currencyRateInverted = (1 / currencyRate).toFixed(5);
         const transactionDate = res.data.date;
-        // const result = this.state.amount * currencyRate;
 
         this.setState({
           currencyRate,
