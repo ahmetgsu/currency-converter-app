@@ -1,19 +1,30 @@
 import React from "react";
 
 class Calculator extends React.Component {
-  
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     this.props.onInputChange(e.target.value);
   };
 
-  converter = () => {
-    const { amount, currencyRate } = this.props;
-    const result = amount * currencyRate
-  };
+  // converter = () => {
+  //   const { amount, currencyRate } = this.props;
+
+  // };
 
   renderContent = () => {
-    const { containerSection, base, toCurrency, amount } = this.props;
-    
+    const {
+      containerSection,
+      base,
+      toCurrency,
+      amount,
+      currencyRate
+    } = this.props;
+
+    const commissionRate = 0.01;
+    const commissionBase = (amount * commissionRate).toFixed(5);
+    const amountAfterCommission = amount - commissionBase;
+    const result = (amount * currencyRate).toFixed(5);
+    const commissionToCurrency = commissionBase * currencyRate;
+    const amountAfterCommissionToCurrency = result - commissionToCurrency;
 
     if (containerSection) {
       return (
@@ -24,7 +35,7 @@ class Calculator extends React.Component {
                 <input
                   type="text"
                   placeholder={`Amount to be converted in ${base}`}
-                  onChange={e => this.handleInputChange(e) }
+                  onChange={e => this.handleInputChange(e)}
                 />
               </div>
             </div>
@@ -35,7 +46,12 @@ class Calculator extends React.Component {
                 borderRadius: "6px"
               }}
             >
-              {`Commission rate 1%  in ${base}`}
+              <span>
+                <h3>{`Commission rate in ${base}`}</h3>
+              </span>
+              <span>
+                <h3>{commissionRate}</h3>
+              </span>
             </div>
             <div
               className="eight wide center aligned column"
@@ -44,7 +60,12 @@ class Calculator extends React.Component {
                 borderRadius: "6px"
               }}
             >
-              {`Commission fee in ${base}`}
+              <span>
+                <h3>{`Commission fee in ${base}`}</h3>
+              </span>
+              <span>
+                <h3>{commissionBase}</h3>
+              </span>
             </div>
             <div
               className="sixteen wide center aligned column"
@@ -54,7 +75,12 @@ class Calculator extends React.Component {
                 margin: "5px 5px 5px 5px"
               }}
             >
-              {`Amount after commission in  ${base}`}
+              <span>
+                <h3>{`Amount after commission in  ${base}`}</h3>
+              </span>
+              <span>
+                <h3>{amountAfterCommission}</h3>
+              </span>
             </div>
           </div>
         </div>
@@ -66,28 +92,25 @@ class Calculator extends React.Component {
             <div className="sixteen wide center aligned column">
               <div className="ui fluid icon input">
                 <input
-                  type="text"
-                  placeholder={`Amount to be converted in ${toCurrency}`}
+                  disabled={true}
+                  value={result}
+                  style={{ fontWeight: "bolder" }}
                 />
               </div>
             </div>
             <div
-              className="eight wide center aligned column"
+              className="sixteen wide center aligned column"
               style={{
                 border: "1px solid grey",
                 borderRadius: "6px"
               }}
             >
-              {`Commission rate 1% in ${toCurrency}`}
-            </div>
-            <div
-              className="eight wide center aligned column"
-              style={{
-                border: "1px solid grey",
-                borderRadius: "6px"
-              }}
-            >
-              {`Commission fee in ${toCurrency}`}
+              <span>
+                <h3>{`Commission fee in ${toCurrency}`}</h3>
+              </span>
+              <span>
+                <h3>{commissionToCurrency}</h3>
+              </span>
             </div>
             <div
               className="sixteen wide center aligned column"
@@ -97,7 +120,12 @@ class Calculator extends React.Component {
                 margin: "5px 5px 5px 5px"
               }}
             >
-              {`Amount after commission in ${toCurrency}`}
+              <span>
+                <h3>{`Amount after commission in ${toCurrency}`}</h3>
+              </span>
+              <span>
+                <h3>{amountAfterCommissionToCurrency}</h3>
+              </span>
             </div>
           </div>
         </div>

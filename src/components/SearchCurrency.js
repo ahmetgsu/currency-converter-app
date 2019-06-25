@@ -7,10 +7,10 @@ class SearchCurrency extends React.Component {
     console.log(`SearchCurrency component is mounted`);
   }
 
-  handleChange = (e, currency) => {
+  handleChange = e => {
     // console.log(e.target.value);
     this.props.updateBase(e.target.value);
-    this.props.updateBaseOnClick(currency);
+    // this.props.updateBaseOnClick(currency);
   };
 
   renderContent = () => {
@@ -24,7 +24,7 @@ class SearchCurrency extends React.Component {
             className="ui fluid selection dropdown"
             name="from"
             value={base}
-            onChange={(e, currency) => this.handleChange(e, currency)}
+            onChange={e => this.handleChange(e)}
           >
             {currencies.map(item => (
               <option key={uuid()} value={item}>

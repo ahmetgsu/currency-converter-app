@@ -21,18 +21,18 @@ class App extends React.Component {
     this.getBaseCurrencyData();
     console.log(`App component is mounted`);
   }
-  
+
   updateBase = currency => {
     this.setState({ base: currency }, () => {
       this.getBaseCurrencyData();
     });
   };
 
-  updateBaseOnClick = curr => {
-    this.setState({ base: curr }, () => {
-      this.getBaseCurrencyData();
-    });
-  };
+  // updateBaseOnClick = curr => {
+  //   this.setState({ base: curr }, () => {
+  //     this.getBaseCurrencyData();
+  //   });
+  // };
 
   onInputChange = value => {
     console.log(value);
@@ -47,7 +47,14 @@ class App extends React.Component {
         const currencyRate = res.data.rates[this.state.toCurrency].toFixed(5);
         const currencyRateInverted = (1 / currencyRate).toFixed(5);
         const transactionDate = res.data.date;
-        this.setState({ currencyRate, transactionDate, currencyRateInverted });
+        // const result = this.state.amount * currencyRate;
+
+        this.setState({
+          currencyRate,
+          transactionDate,
+          currencyRateInverted
+          // result
+        });
 
         const currencyArr = [];
         for (const item in res.data.rates) {
@@ -114,6 +121,7 @@ class App extends React.Component {
                       toCurrency={this.state.toCurrency}
                       amount={this.state.amount}
                       containerSection={this.state.containerSection}
+                      result={this.state.result}
                     />
                   </div>
                   <div className="content">
@@ -147,9 +155,12 @@ class App extends React.Component {
                   </div>
                   <div className="content">
                     <Calculator
+                      currencyRate={this.state.currencyRate}
                       base={this.state.toCurrency}
                       toCurrency={this.state.toCurrency}
+                      amount={this.state.amount}
                       containerSection={!this.state.containerSection}
+                      result={this.state.result}
                     />
                   </div>
                   <div className="content">
