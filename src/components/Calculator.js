@@ -1,8 +1,19 @@
 import React from "react";
 
 class Calculator extends React.Component {
+  
+  handleInputChange = (e) => {
+    this.props.onInputChange(e.target.value);
+  };
+
+  converter = () => {
+    const { amount, currencyRate } = this.props;
+    const result = amount * currencyRate
+  };
+
   renderContent = () => {
-    const { containerSection, base, toCurrency } = this.props;
+    const { containerSection, base, toCurrency, amount } = this.props;
+    
 
     if (containerSection) {
       return (
@@ -13,6 +24,7 @@ class Calculator extends React.Component {
                 <input
                   type="text"
                   placeholder={`Amount to be converted in ${base}`}
+                  onChange={e => this.handleInputChange(e) }
                 />
               </div>
             </div>

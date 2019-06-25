@@ -21,6 +21,7 @@ class App extends React.Component {
     this.getBaseCurrencyData();
     console.log(`App component is mounted`);
   }
+  
   updateBase = currency => {
     this.setState({ base: currency }, () => {
       this.getBaseCurrencyData();
@@ -31,6 +32,11 @@ class App extends React.Component {
     this.setState({ base: curr }, () => {
       this.getBaseCurrencyData();
     });
+  };
+
+  onInputChange = value => {
+    console.log(value);
+    this.setState({ amount: value });
   };
 
   getBaseCurrencyData = () => {
@@ -102,8 +108,11 @@ class App extends React.Component {
                   </div>
                   <div className="content">
                     <Calculator
+                      currencyRate={this.state.currencyRate}
+                      onInputChange={this.onInputChange}
                       base={this.state.base}
                       toCurrency={this.state.toCurrency}
+                      amount={this.state.amount}
                       containerSection={this.state.containerSection}
                     />
                   </div>
