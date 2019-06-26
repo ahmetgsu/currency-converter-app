@@ -1,8 +1,12 @@
 import React from "react";
 
 class QuickConversion extends React.Component {
-  handleClick = e => {
-    this.props.updateBaseOnClick(e);
+  handleClick = currency => {
+    if (this.props.containerSection) {
+      this.props.updateBase(currency);
+    } else {
+      this.props.updateToCurrency(currency);
+    }
   };
 
   renderContent = () => {
@@ -13,15 +17,15 @@ class QuickConversion extends React.Component {
     if (containerSection) {
       return (
         <div className="ui stackable four column center aligned grid">
-          {majorCurrenciesFrom.map((item, index) => {
+          {majorCurrenciesFrom.map((currency, index) => {
             return (
               <div key={index} className="column">
                 <button
                   key={index}
                   className="ui button"
-                  onClick={() => this.handleClick({ item })}
+                  onClick={() => this.handleClick(currency)}
                 >
-                  <strong>{item}</strong>
+                  <strong>{currency}</strong>
                 </button>
               </div>
             );
@@ -31,15 +35,15 @@ class QuickConversion extends React.Component {
     } else {
       return (
         <div className="ui stackable four column center aligned grid">
-          {majorCurrenciesTo.map((item, index) => {
+          {majorCurrenciesTo.map((currency, index) => {
             return (
               <div key={index} className="column">
                 <button
                   key={index}
                   className="ui button"
-                  onClick={e => this.handleClick(e)}
+                  onClick={() => this.handleClick(currency)}
                 >
-                  <strong>{item}</strong>
+                  <strong>{currency}</strong>
                 </button>
               </div>
             );
@@ -50,6 +54,7 @@ class QuickConversion extends React.Component {
   };
 
   render() {
+    // console.log(this.props);
     return <div>{this.renderContent()}</div>;
   }
 }

@@ -15,11 +15,13 @@ class Calculator extends React.Component {
     } = this.props;
 
     const commissionRate = 0.01;
-    const commissionBase = (amount * commissionRate).toFixed(5);
-    const amountAfterCommission = amount - commissionBase;
-    const result = (amount * currencyRate).toFixed(5);
-    const commissionToCurrency = commissionBase * currencyRate;
-    const amountAfterCommissionToCurrency = result - commissionToCurrency;
+    const commissionBase = (amount * commissionRate).toFixed(2);
+    const amountAfterCommission = (amount - commissionBase).toFixed(2);
+    const result = (amount * currencyRate).toFixed(2);
+    const commissionToCurrency = (commissionBase * currencyRate).toFixed(2);
+    const amountAfterCommissionToCurrency = (
+      result - commissionToCurrency
+    ).toFixed(2);
 
     if (containerSection) {
       return (

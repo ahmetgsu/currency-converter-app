@@ -3,13 +3,15 @@ import SearchCurrency from "./SearchCurrency";
 import CurrencyRate from "./CurrencyRate";
 import QuickConversion from "./QuickConversion";
 import Calculator from "./Calculator";
+import BuyButton from "./BuyButton";
+import CurrencyAccount from "./CurrencyAccount";
 import axios from "axios";
 // import Country from "./Country";
 
 class App extends React.Component {
   state = {
     base: "USD",
-    amount: "",
+    amount: null,
     toCurrency: "EUR",
     currencies: [],
     containerSection: "left"
@@ -22,6 +24,12 @@ class App extends React.Component {
 
   updateBase = currency => {
     this.setState({ base: currency }, () => {
+      this.getBaseCurrencyData();
+    });
+  };
+
+  updateToCurrency = currency => {
+    this.setState({ toCurrency: currency }, () => {
       this.getBaseCurrencyData();
     });
   };
@@ -44,7 +52,6 @@ class App extends React.Component {
           currencyRate,
           transactionDate,
           currencyRateInverted
-          // result
         });
 
         const currencyArr = [];
@@ -97,7 +104,6 @@ class App extends React.Component {
                   <div className="content">
                     <SearchCurrency
                       updateBase={this.updateBase}
-                      updateBaseOnClick={this.updateBaseOnClick}
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
@@ -157,6 +163,7 @@ class App extends React.Component {
                   <div className="content">
                     <QuickConversion
                       updateBase={this.updateBase}
+                      updateToCurrency={this.updateToCurrency}
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
@@ -167,6 +174,12 @@ class App extends React.Component {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <BuyButton />
+        </div>
+        <div>
+          <CurrencyAccount />
         </div>
       </div>
     );
