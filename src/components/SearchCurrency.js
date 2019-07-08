@@ -7,7 +7,11 @@ class SearchCurrency extends React.Component {
   }
 
   handleChange = e => {
-    this.props.updateBase(e.target.value);
+    if (this.props.containerSection) {
+      this.props.updateBase(e.target.value);
+    } else {
+      this.props.updateToCurrency(e.target.value);
+    }
   };
 
   renderContent = () => {

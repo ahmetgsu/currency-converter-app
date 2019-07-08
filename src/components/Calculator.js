@@ -2,7 +2,9 @@ import React from "react";
 
 class Calculator extends React.Component {
   handleInputChange = e => {
-    this.props.onInputChange(e.target.value);
+    isNaN(e.target.value)
+      ? alert(`Invalid input type, please enter a number`)
+      : this.props.onInputChange(e.target.value);
   };
 
   renderContent = () => {
@@ -33,6 +35,7 @@ class Calculator extends React.Component {
                   type="text"
                   placeholder={`Amount to be converted in ${base}`}
                   onChange={e => this.handleInputChange(e)}
+                  style={{ fontWeight: "bold", fontSize: "20px" }}
                 />
               </div>
             </div>
@@ -91,7 +94,7 @@ class Calculator extends React.Component {
                 <input
                   disabled={true}
                   value={result}
-                  style={{ fontWeight: "bolder" }}
+                  style={{ fontWeight: "bolder", fontSize: "20px" }}
                 />
               </div>
             </div>
@@ -99,7 +102,8 @@ class Calculator extends React.Component {
               className="sixteen wide center aligned column"
               style={{
                 border: "1px solid grey",
-                borderRadius: "6px"
+                borderRadius: "6px",
+                margin: "5px 5px 5px 5px"
               }}
             >
               <span>

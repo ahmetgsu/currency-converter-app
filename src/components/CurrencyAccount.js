@@ -3,6 +3,8 @@ import CurrencyAccountItem from "./CurrencyAccountItem";
 
 class CurrencyAccount extends React.Component {
   render() {
+    console.log(this.props);
+    const { userBalance } = this.props;
     return (
       <div className="ui container">
         <div className="ui grid">
@@ -11,7 +13,7 @@ class CurrencyAccount extends React.Component {
               <div className="center aligned content">
                 <h2>Currency Deposit Accounts Balance</h2>
               </div>
-              <CurrencyAccountItem />
+              <CurrencyAccountItem userBalance={userBalance} />
             </div>
           </div>
         </div>
