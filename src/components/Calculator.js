@@ -43,7 +43,8 @@ class Calculator extends React.Component {
               className="eight wide center aligned column"
               style={{
                 border: "1px solid grey",
-                borderRadius: "6px"
+                borderRadius: "6px",
+                margin: "5px 0px 5px 0px"
               }}
             >
               <span>
@@ -57,7 +58,8 @@ class Calculator extends React.Component {
               className="eight wide center aligned column"
               style={{
                 border: "1px solid grey",
-                borderRadius: "6px"
+                borderRadius: "6px",
+                margin: "5px 0px 5px 0px"
               }}
             >
               <span>
