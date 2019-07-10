@@ -3,9 +3,12 @@ import React from "react";
 class BuyButton extends React.Component {
   handleClick = () => {
     // e.preventDefault();
-    const { amount, userBalance } = this.props;
+    const { amount, userBalance, base } = this.props;
     // console.log(amount, initialUsdBalance);
-    if (Number(amount) > Number(userBalance[0].value)) {
+    if (
+      Number(amount) >
+      Number(userBalance.find(item => item.currency === base).value)
+    ) {
       alert(`Not enough money to buy selected currency...`);
       return;
     }
@@ -25,7 +28,9 @@ class BuyButton extends React.Component {
         <div className="ui header">
           <button
             className="ui positive basic button"
-            style={{ fontSize: "1em" }}
+            style={{
+              fontSize: "1em"
+            }}
             onClick={() => this.handleClick()}
           >
             Buy

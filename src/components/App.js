@@ -264,6 +264,7 @@ class App extends React.Component {
         </div>
         <div>
           <BuyButton
+            base={this.state.base}
             userBalance={this.state.userBalance}
             amount={this.state.amount}
             updateCurrencyBalances={this.updateCurrencyBalances}

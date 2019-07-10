@@ -10,7 +10,13 @@ class CurrencyAccountItem extends React.Component {
       <div className="content">
         <div className="ui cards">
           {userBalance.map(item => (
-            <div key={uuid()} className="card" style={{ width: "150px" }}>
+            <div
+              key={uuid()}
+              className="card"
+              style={{
+                width: "150px"
+              }}
+            >
               <div className="content">
                 <h3>{item.currency}</h3>
               </div>
