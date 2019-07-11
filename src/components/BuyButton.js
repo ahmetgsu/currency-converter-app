@@ -4,7 +4,6 @@ class BuyButton extends React.Component {
   handleClick = () => {
     // e.preventDefault();
     const { amount, userBalance, base } = this.props;
-    // console.log(amount, initialUsdBalance);
     if (
       Number(amount) >
       Number(userBalance.find(item => item.currency === base).value)
@@ -22,7 +21,6 @@ class BuyButton extends React.Component {
   };
 
   render() {
-    // const { amount, initialUsdBalance } = this.props;
     return (
       <div className="ui right aligned container" style={{ margin: "20px" }}>
         <div className="ui header">

@@ -3,7 +3,6 @@ import uuid from "uuid";
 
 class CurrencyAccountItem extends React.Component {
   render() {
-    console.log(this.props);
     const { userBalance } = this.props;
     console.log(userBalance);
     return (

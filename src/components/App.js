@@ -204,15 +204,11 @@ class App extends React.Component {
                       toCurrency={this.state.toCurrency}
                       amount={this.state.amount}
                       containerSection={this.state.containerSection}
-                      result={this.state.result}
                     />
                   </div>
                   <div className="content">
                     <QuickConversion
                       updateBase={this.updateBase}
-                      base={this.state.base}
-                      currencies={this.state.currencies}
-                      toCurrency={this.state.toCurrency}
                       containerSection={this.state.containerSection}
                     />
                   </div>
@@ -244,16 +240,11 @@ class App extends React.Component {
                       toCurrency={this.state.toCurrency}
                       amount={this.state.amount}
                       containerSection={!this.state.containerSection}
-                      result={this.state.result}
                     />
                   </div>
                   <div className="content">
                     <QuickConversion
-                      updateBase={this.updateBase}
                       updateToCurrency={this.updateToCurrency}
-                      base={this.state.base}
-                      currencies={this.state.currencies}
-                      toCurrency={this.state.toCurrency}
                       containerSection={!this.state.containerSection}
                     />
                   </div>
@@ -271,10 +262,7 @@ class App extends React.Component {
           />
         </div>
         <div>
-          <CurrencyAccount
-            userBalance={this.state.userBalance}
-            updateCurrencyBalances={this.updateCurrencyBalances}
-          />
+          <CurrencyAccount userBalance={this.state.userBalance} />
         </div>
       </div>
     );
