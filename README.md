@@ -1,20 +1,20 @@
-<h1>Currency Converter (React.JS)</h1>
+#Currency Converter (React.JS)
 
 What this project is about to create an currency converter app which first let user to convert currencies and then to see his/her user currency account balance and finally to buy selected currecies. This is my first React project.
 
-<h2>Table of contents:</h2>
-<ol>
-  <li>Technologies used</li>
-  <li>Goals for this project</li>
-</ol>
+##Table of contents:
 
-<h2>Technologies used</h2>
-  <ol>
-    <li>React</li>
-    <li>Javascript (ES6 Features)</li>
-    <li>HTML</li>
-    <li>CSS (Semantic UI)</li>
-  </ol>
+  1. Technologies used
+  2. Goals for this project
+
+
+##Technologies used
+  
+    1. React
+    2. Javascript (ES6 Features)
+    3. HTML
+    4. CSS (Semantic UI)
+  
 
 <h2>Goals for this project:</h2>
 <ol>
