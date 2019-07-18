@@ -4,7 +4,7 @@ import uuid from "uuid";
 class CurrencyAccountItem extends React.Component {
   render() {
     const { userBalance } = this.props;
-    // const classNameChange =
+
     return (
       <div className="content">
         <div className="ui cards">

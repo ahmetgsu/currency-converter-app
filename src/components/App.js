@@ -11,13 +11,14 @@ import {
 } from "../lib/currencyCalculations";
 
 import axios from "axios";
-// import Country from "./Country";
 
 class App extends React.Component {
   state = {
     base: "USD",
+    baseCode: "us",
     amount: null,
     toCurrency: "EUR",
+    toCurrencyCode: "eu",
     currencies: [],
     containerSection: "left",
     userBalance: [{ currency: "USD", value: 1000 }]
@@ -28,15 +29,24 @@ class App extends React.Component {
   }
 
   updateBase = currency => {
-    this.setState({ base: currency }, () => {
-      this.getBaseCurrencyData();
-    });
+    this.setState(
+      { base: currency, baseCode: currency.slice(0, 2).toLowerCase() },
+      () => {
+        this.getBaseCurrencyData();
+      }
+    );
   };
 
   updateToCurrency = currency => {
-    this.setState({ toCurrency: currency }, () => {
-      this.getBaseCurrencyData();
-    });
+    this.setState(
+      {
+        toCurrency: currency,
+        toCurrencyCode: currency.slice(0, 2).toLowerCase()
+      },
+      () => {
+        this.getBaseCurrencyData();
+      }
+    );
   };
 
   onInputChange = value => {
@@ -68,7 +78,7 @@ class App extends React.Component {
     axios
       .get(`https://api.exchangeratesapi.io/latest?base=${this.state.base}`)
       .then(res => {
-        // console.log(res.data.rates[this.state.toCurrency]);
+        console.log(res.data.rates);
         const currencyRate = res.data.rates[this.state.toCurrency].toFixed(5);
         const currencyRateInverted = (1 / currencyRate).toFixed(5);
         const transactionDate = res.data.date;
@@ -91,6 +101,7 @@ class App extends React.Component {
   };
 
   render() {
+    //console.log(countryData.Response[0]);
     console.log("state", this.state);
     return (
       <div>
@@ -119,7 +130,10 @@ class App extends React.Component {
             <div className="ui grid">
               <div className="eight wide column">
                 <div className="ui fluid card left">
-                  <div className="content">
+                  <div
+                    className="content"
+                    style={{ backgroundColor: "#f1f8ff" }}
+                  >
                     <CurrencyRate
                       base={this.state.base}
                       currencyRate={this.state.currencyRate}
@@ -130,6 +144,7 @@ class App extends React.Component {
                     <SearchCurrency
                       updateBase={this.updateBase}
                       base={this.state.base}
+                      baseCode={this.state.baseCode}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
                       containerSection={this.state.containerSection}
@@ -155,7 +170,10 @@ class App extends React.Component {
               </div>
               <div className="eight wide column">
                 <div className="ui fluid card right">
-                  <div className="content">
+                  <div
+                    className="content"
+                    style={{ backgroundColor: "#f1f8ff" }}
+                  >
                     <CurrencyRate
                       base={this.state.toCurrency}
                       currencyRate={this.state.currencyRateInverted}
@@ -168,6 +186,7 @@ class App extends React.Component {
                       base={this.state.base}
                       currencies={this.state.currencies}
                       toCurrency={this.state.toCurrency}
+                      toCurrencyCode={this.state.toCurrencyCode}
                       containerSection={!this.state.containerSection}
                     />
                   </div>
