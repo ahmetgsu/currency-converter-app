@@ -1,14 +1,14 @@
-#Currency Converter (React.JS)
+# Currency Converter (React.JS)
 
 What this project is about to create an currency converter app which first let user to convert currencies and then to see his/her user currency account balance and finally to buy selected currecies. This is my first React project.
 
-##Table of contents:
+## Table of contents:
 
   1. Technologies used
   2. Goals for this project
 
 
-##Technologies used
+## Technologies used
   
     1. React
     2. Javascript (ES6 Features)
