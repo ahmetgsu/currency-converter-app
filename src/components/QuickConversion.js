@@ -25,8 +25,11 @@ class QuickConversion extends React.Component {
                   key={index}
                   className="ui button"
                   onClick={() => this.handleClick(currency)}
+                  style={{
+                    fontSize: "1.2em"
+                  }}
                 >
-                  <strong>{currency}</strong>
+                  {currency}
                 </button>
               </div>
             );
@@ -41,10 +44,13 @@ class QuickConversion extends React.Component {
               <div key={index} className="column">
                 <button
                   key={index}
-                  className="ui button"
+                  className="ui toggle button"
                   onClick={() => this.handleClick(currency)}
+                  style={{
+                    fontSize: "1.2em"
+                  }}
                 >
-                  <strong>{currency}</strong>
+                  {currency}
                 </button>
               </div>
             );
