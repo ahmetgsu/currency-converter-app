@@ -18,10 +18,10 @@ What this project is about to create an currency converter app which first let u
 
 ## Goals for this project:
   1. To practice pure React knowledge (no react-router or redux)
-    * to use component and state
-    * to request data from api using axios
-    * to understand lifecycle methods
-    * to be able to implement different event handlers
+     * to use component and state
+     * to request data from api using axios
+     * to understand lifecycle methods
+     * to be able to implement different event handlers
   2. To practice JS ES6 features
   3. To learn how to use & implement semantic ui
   4. To find solutions to encountered problems
