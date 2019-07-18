@@ -16,16 +16,13 @@ What this project is about to create an currency converter app which first let u
     4. CSS (Semantic UI)
   
 
-<h2>Goals for this project:</h2>
-<ol>
-    <li>To practice pure React knowledge (no react-router or redux)</li>
-      <ul>
-        <li>to use component and state</li>
-        <li>to request data from api using axios</li>
-        <li>to understand lifecycle methods</li>
-        <li>to be able to implement different event handlers</li>
-      </ul>
-    <li>To practice JS ES6 features</li>
-    <li>To learn how to use & implement semantic ui</li>
-    <li>Find solutions to encountered problems</li>
-  </ol>
+## Goals for this project:
+  1. To practice pure React knowledge (no react-router or redux)
+    * to use component and state
+    * to request data from api using axios
+    * to understand lifecycle methods
+    * to be able to implement different event handlers
+  2. To practice JS ES6 features
+  3. To learn how to use & implement semantic ui
+  4. To find solutions to encountered problems
+
