@@ -4,7 +4,7 @@ import uuid from "uuid";
 class CurrencyAccountItem extends React.Component {
   render() {
     const { userBalance } = this.props;
-    console.log(userBalance);
+
     return (
       <div className="content">
         <div className="ui cards">
@@ -19,7 +19,9 @@ class CurrencyAccountItem extends React.Component {
               <div className="content">
                 <h3>{item.currency}</h3>
               </div>
-              <div className="content">{item.value}</div>
+              <div className="content">
+                {Number(item.value.toFixed(2)).toLocaleString()}
+              </div>
             </div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 class QuickConversion extends React.Component {
   handleClick = currency => {
-    console.log(currency);
+    console.log(`${currency} button clicked...`);
     if (this.props.containerSection) {
       this.props.updateBase(currency);
     } else {

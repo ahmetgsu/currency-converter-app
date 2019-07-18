@@ -5,6 +5,10 @@ import QuickConversion from "./QuickConversion";
 import Calculator from "./Calculator";
 import BuyButton from "./BuyButton";
 import CurrencyAccount from "./CurrencyAccount";
+import {
+  calculateCurrencyAfterCommission,
+  updateBalance
+} from "../lib/currencyCalculations";
 
 import axios from "axios";
 // import Country from "./Country";
@@ -21,7 +25,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getBaseCurrencyData();
-    console.log(`App component is mounted`);
   }
 
   updateBase = currency => {
@@ -44,73 +47,11 @@ class App extends React.Component {
   //This function is called in BuyButton component by onClick event
   updateCurrencyBalances = () => {
     const { base, amount, toCurrency, userBalance, currencyRate } = this.state;
-    const commissionRate = 0.01;
-    const commissionBase = Number((amount * commissionRate).toFixed(2));
-    // const amountAfterCommission = Number((amount - commissionBase).toFixed(2));
-    const result = Number((amount * currencyRate).toFixed(2));
-    const commissionToCurrency = Number(
-      (commissionBase * currencyRate).toFixed(2)
-    );
-    const amountAfterCommissionToCurrency = Number(
-      (result - commissionToCurrency).toFixed(2)
-    );
 
-    const updateBalance = (
-      currentBalance,
-      baseCurrency,
-      currencyTo,
+    const amountAfterCommissionToCurrency = calculateCurrencyAfterCommission(
       amount,
-      buyedAmount
-    ) => {
-      console.log(buyedAmount);
-      const checkBaseBalance = currentBalance.find(
-        item => item.currency === baseCurrency
-      );
-      const checkToBalance = currentBalance.find(
-        item => item.currency === currencyTo
-      );
-      console.log(checkBaseBalance, checkToBalance);
-      let newCurrency;
-      let balanceToUpdate;
-      // This block checks if the initial endowment has selected baseCurrency
-      if (!checkBaseBalance) {
-        alert(`Please create ${baseCurrency} account first`);
-        balanceToUpdate = currentBalance;
-        // Control point before 1st buy
-      } else if (currentBalance.length === 1) {
-        newCurrency = [{ currency: currencyTo, value: buyedAmount }];
-        balanceToUpdate = [...currentBalance, ...newCurrency];
-      } else {
-        // When there are more than 1 account, it checks...
-        if (checkToBalance) {
-          // ..if selected currency to buy is in userBalance
-          balanceToUpdate = currentBalance;
-          const existingObject = balanceToUpdate.find(
-            item => item.currency === currencyTo
-          );
-          existingObject.value += buyedAmount;
-          console.log(balanceToUpdate);
-        } else {
-          // ....if selected currency to buy is NOT in userBalance
-          newCurrency = [{ currency: currencyTo, value: buyedAmount }];
-          balanceToUpdate = [...currentBalance, ...newCurrency];
-          console.log(currentBalance, balanceToUpdate);
-        }
-      }
-      return balanceToUpdate.map(item => {
-        if (item.currency === baseCurrency) {
-          return { currency: baseCurrency, value: item.value - amount };
-        }
-        if (item.currency === currencyTo) {
-          return {
-            currency: currencyTo,
-            value: item.value
-          };
-        } else {
-          return { currency: item.currency, value: item.value };
-        }
-      });
-    };
+      currencyRate
+    );
 
     this.setState({
       userBalance: updateBalance(
@@ -223,7 +164,6 @@ class App extends React.Component {
                   </div>
                   <div className="content">
                     <SearchCurrency
-                      updateBase={this.updateBase}
                       updateToCurrency={this.updateToCurrency}
                       base={this.state.base}
                       currencies={this.state.currencies}

@@ -2,10 +2,6 @@ import React from "react";
 import uuid from "uuid";
 
 class SearchCurrency extends React.Component {
-  componentDidMount() {
-    console.log(`SearchCurrency component is mounted`);
-  }
-
   handleChange = e => {
     if (this.props.containerSection) {
       this.props.updateBase(e.target.value);
