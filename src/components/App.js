@@ -42,9 +42,7 @@ class App extends React.Component {
   };
 
   //This function is called in BuyButton component by onClick event
-  updateCurrencyBalances = sum => {
-    console.log(sum);
-
+  updateCurrencyBalances = () => {
     const { base, amount, toCurrency, userBalance, currencyRate } = this.state;
     const commissionRate = 0.01;
     const commissionBase = Number((amount * commissionRate).toFixed(2));
@@ -134,17 +132,17 @@ class App extends React.Component {
         const currencyRateInverted = (1 / currencyRate).toFixed(5);
         const transactionDate = res.data.date;
 
-        this.setState({
-          currencyRate,
-          transactionDate,
-          currencyRateInverted
-        });
-
         const currencyArr = [];
         for (const item in res.data.rates) {
           currencyArr.push(item);
         }
-        this.setState({ currencies: currencyArr.sort() });
+
+        this.setState({
+          currencyRate,
+          transactionDate,
+          currencyRateInverted,
+          currencies: currencyArr.sort()
+        });
       })
       .catch(err => {
         console.log("Opps", err.message);
