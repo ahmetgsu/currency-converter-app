@@ -140,7 +140,10 @@ class App extends React.Component {
                       toCurrency={this.state.toCurrency}
                     />
                   </div>
-                  <div className="content">
+                  <div
+                    className="content"
+                    style={{ backgroundColor: "#fffaf1" }}
+                  >
                     <SearchCurrency
                       updateBase={this.updateBase}
                       base={this.state.base}
@@ -180,7 +183,10 @@ class App extends React.Component {
                       toCurrency={this.state.base}
                     />
                   </div>
-                  <div className="content">
+                  <div
+                    className="content"
+                    style={{ backgroundColor: "#fffaf1" }}
+                  >
                     <SearchCurrency
                       updateToCurrency={this.updateToCurrency}
                       base={this.state.base}

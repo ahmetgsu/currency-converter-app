@@ -32,7 +32,7 @@ class SearchCurrency extends React.Component {
               svg
               styleProps={{
                 width: "85.125px",
-                height: "37.972px"
+                height: "54.24px"
               }}
             />
           </div>
@@ -42,9 +42,10 @@ class SearchCurrency extends React.Component {
               name="from"
               value={base}
               onChange={e => this.handleChange(e)}
+              style={{ fontSize: "20px", fontWeight: "bold" }}
             >
               {currencies.map(item => (
-                <option key={uuid()} value={item}>
+                <option key={uuid()} value={item} style={{ fontSize: "24px" }}>
                   {item}
                 </option>
               ))}
@@ -61,7 +62,7 @@ class SearchCurrency extends React.Component {
               svg
               styleProps={{
                 width: "85.125px",
-                height: "37.972px"
+                height: "54.24px"
               }}
             />
           </div>
@@ -71,9 +72,10 @@ class SearchCurrency extends React.Component {
               name="to"
               value={toCurrency}
               onChange={e => this.handleChange(e)}
+              style={{ fontSize: "20px", fontWeight: "bold" }}
             >
               {currencies.map(item => (
-                <option key={uuid()} value={item}>
+                <option key={uuid()} value={item} style={{ fontSize: "24px" }}>
                   {item}
                 </option>
               ))}
