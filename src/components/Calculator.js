@@ -42,7 +42,7 @@ class Calculator extends React.Component {
             <div
               className="seven wide center aligned column"
               style={{
-                border: "1px solid grey",
+                border: "1px solid #d3d3d3",
                 borderRadius: "6px",
                 position: "relative",
                 margin: "auto",
@@ -60,7 +60,7 @@ class Calculator extends React.Component {
             <div
               className="eight wide center aligned column"
               style={{
-                border: "1px solid grey",
+                border: "1px solid #d3d3d3",
                 borderRadius: "6px",
                 position: "relative",
                 margin: "auto",
@@ -78,7 +78,7 @@ class Calculator extends React.Component {
             <div
               className="sixteen wide center aligned column"
               style={{
-                border: "1px solid grey",
+                border: "1px solid #d3d3d3",
                 borderRadius: "6px",
                 margin: "5px 5px 5px 5px"
               }}
@@ -109,7 +109,7 @@ class Calculator extends React.Component {
             <div
               className="sixteen wide center aligned column"
               style={{
-                border: "1px solid grey",
+                border: "1px solid #d3d3d3",
                 borderRadius: "6px",
                 margin: "5px 5px 5px 5px"
               }}
@@ -124,7 +124,7 @@ class Calculator extends React.Component {
             <div
               className="sixteen wide center aligned column"
               style={{
-                border: "1px solid grey",
+                border: "1px solid #d3d3d3",
                 borderRadius: "6px",
                 margin: "5px 5px 5px 5px"
               }}
