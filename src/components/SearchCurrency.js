@@ -20,6 +20,10 @@ class SearchCurrency extends React.Component {
     } = this.props;
 
     if (containerSection) {
+      console.log(this.props);
+      if (!currencies.includes(base)) {
+        currencies.push(base);
+      }
       return (
         <div className="ui grid">
           <div className="four wide column">
